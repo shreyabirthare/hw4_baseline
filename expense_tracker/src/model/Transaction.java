@@ -38,7 +38,10 @@ public class Transaction {
   // public void setAmount(double amount) {
   //   this.amount = amount;
   // }
-
+/**
+ * get category
+ * @return
+ */
   public String getCategory() {
     return category;
   }
@@ -46,11 +49,18 @@ public class Transaction {
   // public void setCategory(String category) {
   //   this.category = category; 
   // }
-  
+  /**
+   * get timestamp
+   * @return
+   */
   public String getTimestamp() {
     return timestamp;
   }
   //private helper method to generate timestamp
+  /**
+   * generate ts
+   * @return
+   */
   private String generateTimestamp() {
      return dateFormatter.format(new Date());
   }

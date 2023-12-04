@@ -25,7 +25,12 @@ public class ExpenseTrackerController implements model.ExpenseTrackerModelListen
   public void setFilter(TransactionFilter filter) {
     this.filter = filter;
   }
-
+/**
+ * add transaction
+ * @param amount
+ * @param category
+ * @return
+ */
   public boolean addTransaction(double amount, String category) {
     if (!InputValidation.isValidAmount(amount)) {
       return false;
@@ -38,7 +43,9 @@ public class ExpenseTrackerController implements model.ExpenseTrackerModelListen
     model.addTransaction(t);
     return true;
   }
-
+/** 
+ * apply filter
+ */
   public void applyFilter() {
     //null check for filter
     if(filter!=null){
@@ -57,7 +64,11 @@ public class ExpenseTrackerController implements model.ExpenseTrackerModelListen
       view.toFront();
     }
   }
-
+/**
+ * undo transaction
+ * @param rowIndex
+ * @return
+ */
   //for undoing any selected transaction
   public boolean undoTransaction(int rowIndex) {
     if (rowIndex >= 0 && rowIndex < model.getTransactions().size()) {

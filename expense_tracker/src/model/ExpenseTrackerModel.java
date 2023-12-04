@@ -13,13 +13,18 @@ public class ExpenseTrackerModel {
 
   // This is applying the Observer design pattern.                          
   // Specifically, this is the Observable class. 
-    
+  /**
+   * expense tracker model
+   */
   public ExpenseTrackerModel() {
     transactions = new ArrayList<Transaction>();
     matchedFilterIndices = new ArrayList<Integer>();
     listeners = new ArrayList<ExpenseTrackerModelListener>(); // Initializing the listeners list
   }
-
+/**
+ * add transaction function
+ * @param t
+ */
   public void addTransaction(Transaction t) {
     // Perform input validation to guarantee that all transactions added are non-null.
     if (t == null) {
@@ -30,19 +35,28 @@ public class ExpenseTrackerModel {
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
   }
-
+/**
+ * remove transaction
+ * @param t
+ */
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
     stateChanged();
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
   }
-
+/**
+ * get transaction
+ * @return
+ */
   public List<Transaction> getTransactions() {
     //encapsulation - data integrity
     return Collections.unmodifiableList(new ArrayList<>(transactions));
   }
-
+/**
+ * set matched filter indices
+ * @param newMatchedFilterIndices
+ */
   public void setMatchedFilterIndices(List<Integer> newMatchedFilterIndices) {
       // Perform input validation
       if (newMatchedFilterIndices == null) {
@@ -58,7 +72,10 @@ public class ExpenseTrackerModel {
       this.matchedFilterIndices.addAll(newMatchedFilterIndices);
       stateChanged();
   }
-
+/**
+ * get matched filter indices
+ * @return
+ */
   public List<Integer> getMatchedFilterIndices() {
       // For encapsulation, copy out the output list
       List<Integer> copyOfMatchedFilterIndices = new ArrayList<Integer>();
@@ -93,14 +110,21 @@ public class ExpenseTrackerModel {
     }
     return false;
   }
-
+/**
+ * number of listeners
+ * @return
+ */
   public int numberOfListeners() {
       // For testing, this is one of the methods.
       //
       //TODO
       return listeners.size();
   }
-
+/**
+ * contains listener
+ * @param listener
+ * @return
+ */
   public boolean containsListener(ExpenseTrackerModelListener listener) {
       // For testing, this is one of the methods.
       //
